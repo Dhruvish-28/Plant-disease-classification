@@ -203,13 +203,13 @@ This indicates the model successfully learned disease-specific visual features.
 
 ### Training vs Validation Loss
 
-![Loss Curve](results/loss_curve.png)
+![Loss Curve](results/Training_loss_curve.png)
 
 ---
 
 ### Training vs Validation Accuracy
 
-![Accuracy Curve](results/accuracy_curve.png)
+![Accuracy Curve](results/Training_accuracy_curve.png)
 
 These curves demonstrate:
 
