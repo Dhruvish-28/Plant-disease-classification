@@ -45,6 +45,7 @@ The final trained model achieves **97.63% test accuracy** on unseen data.
 # 📊 Dataset
 
 **Dataset:** PlantVillage
+Source: [PlantVillage Dataset (Kaggle)](https://www.kaggle.com/datasets/abdallahalidev/plantvillage-dataset)
 
 * **Total Images:** 54,305
 * **Number of Classes:** 38 plant disease categories
