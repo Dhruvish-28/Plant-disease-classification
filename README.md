@@ -236,8 +236,8 @@ plant-disease-classification
 ├── data/                # dataset (not included in repo)
 │
 ├── results/
-│   ├── loss_curve.png
-│   ├── accuracy_curve.png
+│   ├── Training_loss_curve.png
+│   ├── Training_accuracy_curve.png
 │   └── confusion_matrix.png
 │
 ├── src/
