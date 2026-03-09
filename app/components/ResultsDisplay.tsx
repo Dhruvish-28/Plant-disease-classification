@@ -130,7 +130,7 @@ export default function ResultsDisplay({
                             style={{
                               width: `${
                                 Math.min(
-                                  (confidence as number) * 100,
+                                  (confidence as number),
                                   100
                                 )
                               }%`,
