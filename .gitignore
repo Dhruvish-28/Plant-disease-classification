@@ -1,4 +1,48 @@
-models/*.pth
-data/
+# Python
 __pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# Model weights
+*.pth
+*.pt
+
+# Dataset
+data/
+dataset/
+*.zip
+
+# Uploaded images
+uploads/
+
+# Jupyter
 .ipynb_checkpoints/
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python environment files
+.env
+
+# Build files
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/

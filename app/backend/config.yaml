@@ -1,0 +1,262 @@
+Build a clean and professional web application for a machine learning project that predicts plant diseases from leaf images.
+
+The backend model is already trained using PyTorch and a CNN architecture. The model takes an image of a plant leaf and outputs probabilities for 38 plant disease classes.
+
+The web app should allow users to upload an image and view prediction results in a clear and professional interface.
+
+Functional Requirements
+1. Image Upload Input
+
+The user must be able to upload an image of a plant leaf.
+
+Requirements:
+
+Drag-and-drop upload area
+
+Also allow manual file selection
+
+Accept formats:
+
+.jpg
+
+.jpeg
+
+.png
+
+Validate file type before submission
+
+Display preview of uploaded image before prediction
+
+2. Prediction Output
+
+After submitting the image, the system should display:
+
+Uploaded Image
+
+Show the image the user uploaded.
+
+Model Predictions
+
+Display top 3 predicted diseases along with probabilities.
+
+Example:
+
+Prediction Results
+
+1. Tomato Late Blight — 94.2%
+2. Tomato Early Blight — 3.1%
+3. Tomato Leaf Mold — 1.4%
+
+Display predictions in a table or card layout.
+
+3. Backend Integration
+
+Use a Flask backend.
+
+Expected API behavior:
+
+POST /predict
+
+Input:
+
+multipart/form-data
+image file
+
+Processing steps:
+
+Save uploaded image temporarily
+
+Preprocess image (resize 224x224, convert to tensor)
+
+Load trained CNN model
+
+Run inference
+
+Convert logits → probabilities using softmax
+
+Extract top 3 predictions
+
+Return predictions to frontend
+
+Example JSON response:
+
+{
+  "predictions": [
+    {"class": "Tomato Late Blight", "probability": 94.2},
+    {"class": "Tomato Early Blight", "probability": 3.1},
+    {"class": "Tomato Leaf Mold", "probability": 1.4}
+  ]
+}
+4. UI Design Requirements
+
+The website must look clean, minimal, and professional.
+
+Design style
+
+Use a modern card-based layout.
+
+Suggested color palette:
+
+Primary color
+
+#2E7D32  (deep green)
+
+Accent color
+
+#66BB6A (light green)
+
+Background
+
+#F5F7FA
+
+Text
+
+#1C1C1C
+
+This theme reflects agriculture / plant health.
+
+Layout Structure
+Header
+
+Top navigation bar with:
+
+Plant Disease Classifier
+
+Subtitle:
+
+Upload a plant leaf image to detect disease using a trained deep learning model.
+Main Section
+
+Centered prediction card containing:
+
+Image upload area
+
+Upload button
+
+Prediction results
+
+Prediction Section Layout
+
+Two-column layout:
+
+Left side:
+
+Uploaded Image Preview
+
+Right side:
+
+Prediction Results
+Top 3 diseases with probabilities
+5. User Experience Improvements
+
+Add the following features:
+
+Loading indicator
+
+When the model is running inference:
+
+Analyzing image...
+Error handling
+
+Display messages if:
+
+invalid file type
+
+no file uploaded
+
+prediction failure
+
+Responsive design
+
+The layout must work well on:
+
+desktop
+
+tablet
+
+mobile
+
+6. Visual Enhancements
+
+Add the following:
+
+Progress bars for probabilities
+
+Example:
+
+Tomato Late Blight   ██████████████████████ 94%
+Tomato Early Blight  ███ 3%
+Tomato Leaf Mold     █ 1%
+Smooth animations
+
+button hover effect
+
+image preview fade-in
+
+results slide-in
+
+7. Project File Structure
+
+The generated project should follow this structure:
+
+plant-disease-classification
+
+app.py
+
+src/
+  model.py
+  inference.py
+
+templates/
+  index.html
+
+static/
+  styles.css
+  script.js
+
+uploads/
+
+models/
+  best_plant_disease_model.pth
+8. Technologies
+
+Frontend:
+
+HTML
+CSS
+JavaScript
+
+Backend:
+
+Python
+Flask
+PyTorch
+9. Expected User Flow
+
+User opens website
+
+Uploads leaf image
+
+Image preview appears
+
+Clicks "Predict Disease"
+
+Model runs inference
+
+Top 3 predictions displayed
+
+10. Goal
+
+The final website should look like a clean machine learning demo application, suitable for:
+
+portfolio projects
+
+GitHub showcase
+
+internship demonstrations
+
+It should highlight both:
+
+machine learning model
+
+user-facing application.
