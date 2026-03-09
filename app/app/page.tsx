@@ -36,7 +36,7 @@ export default function Home() {
       }
 
       const data = await response.json();
-      setResults(data.predictions);
+      setResults(data);
     } catch (error) {
       setResults({
         error: error instanceof Error ? error.message : 'An error occurred',
