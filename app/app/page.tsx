@@ -26,7 +26,7 @@ export default function Home() {
       formData.append('image', file);
 
       // Call Flask backend
-      const response = await fetch('https://dhruvish-28-plant-disease-classification.hf.space/run/predict', {
+      const response = await fetch('https://dhruvish-28-plant-disease-classification.hf.space/classify', {
         method: 'POST',
         body: formData,
       });
