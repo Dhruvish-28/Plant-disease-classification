@@ -107,7 +107,7 @@ export default function ResultsDisplay({
               <div
                 className="h-full bg-accent transition-all"
                 style={{
-                  width: `${Math.min(results.confidence, 100)}%`,
+                  width: `${Math.min(results.confidence*100, 100)}%`,
                 }}
               />
             </div>
