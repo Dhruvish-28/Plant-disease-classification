@@ -22,13 +22,51 @@ This project demonstrates a **complete machine learning workflow**, including:
 
 The final trained model achieves **97.63% test accuracy** on unseen data.
 
+---
+
+# 🌐 Web Application Demo
+
+In addition to the trained CNN model, this project also includes a **web-based interface** that allows users to upload plant leaf images and receive disease predictions in real time.
+
+The system integrates:
+
+- **Next.js frontend** for the user interface
+- **Flask backend API** for model inference
+- **PyTorch CNN model** for disease prediction
+
+### Prediction Workflow
+
+User uploads plant leaf image  
+↓  
+Frontend sends request to Flask API  
+↓  
+Image is preprocessed and passed to the CNN model  
+↓  
+Model predicts disease class  
+↓  
+Prediction and confidence score returned to the web interface
+
+---
+
+### Upload Interface
+
+![Upload Interface](results/web_upload_interface.png)
+
+---
+
+### Prediction Result
+
+![Prediction Result](results/prediction_result.png)
+
 ## ✨ Project Highlights
 
 • Built a CNN model from scratch for plant disease classification  
 • Implemented weighted cross-entropy to handle class imbalance  
 • Achieved **97.63% test accuracy** on the PlantVillage dataset  
 • Trained on **54k images across 38 classes**  
-• GPU-accelerated training using PyTorch  
+• GPU-accelerated training using PyTorch
+• Built a Flask API for model inference  
+• Developed a Next.js web interface for real-time plant disease prediction
 
 ## 🔑 Key Results
 
@@ -234,48 +272,31 @@ Most predictions lie on the diagonal, indicating strong classification accuracy.
 ```
 plant-disease-classification
 │
-├── data/                # dataset (not included in repo)
+├── data/ # dataset (not included in repo)
 │
 ├── results/
-│   ├── Training_loss_curve.png
-│   ├── Training_accuracy_curve.png
-│   └── confusion_matrix.png
+│ ├── Training_loss_curve.png
+│ ├── Training_accuracy_curve.png
+│ ├── confusion_matrix.png
+│ ├── web_upload_interface.png
+│ └── prediction_result.png
 │
-├── src/
-│   ├── dataset.py
-│   ├── model.py
-│   ├── train.py
-│   ├── evaluate.py
-│   └── utils.py
+├── src/ # backend & ML pipeline
+│ ├── dataset.py
+│ ├── model.py
+│ ├── train.py
+│ ├── evaluate.py
+│ ├── inference.py
+│ └── app.py # Flask API for inference
+│
+├── app/ # Next.js frontend interface
 │
 ├── requirements.txt
 ├── README.md
-└── .gitignore
-```
+└── .gitignore```
 
 ---
 
-# ▶️ How to Run the Project
-
-### 1️⃣ Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### 2️⃣ Train the model
-
-```bash
-python src/train.py
-```
-
-### 3️⃣ Evaluate the model
-
-```bash
-python src/evaluate.py
-```
-
----
 
 # 📦 Dependencies
 
