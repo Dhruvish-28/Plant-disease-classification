@@ -100,14 +100,14 @@ export default function ResultsDisplay({
             <div className="flex items-center justify-between">
               <p className="text-sm font-semibold text-primary">Confidence Level</p>
               <p className="text-2xl font-bold text-accent">
-                {results.confidence_percentage}%
+                {results.confidence}%
               </p>
             </div>
             <div className="h-3 w-full overflow-hidden rounded-full bg-border">
               <div
                 className="h-full bg-accent transition-all"
                 style={{
-                  width: `${Math.min(results.confidence_percentage, 100)}%`,
+                  width: `${Math.min(results.confidence, 100)}%`,
                 }}
               />
             </div>
