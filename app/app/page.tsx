@@ -23,7 +23,7 @@ export default function Home() {
     try {
       // Create FormData for file upload
       const formData = new FormData();
-      formData.append('image', file);
+      formData.append("file", file);
 
       // Call Flask backend
       const response = await fetch('https://dhruvish-28-plant-disease-classification.hf.space/classify', {
@@ -36,7 +36,7 @@ export default function Home() {
       }
 
       const data = await response.json();
-      setResults(data);
+      setResults(data.predictions);
     } catch (error) {
       setResults({
         error: error instanceof Error ? error.message : 'An error occurred',
