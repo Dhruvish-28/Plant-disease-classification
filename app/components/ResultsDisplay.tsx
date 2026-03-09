@@ -138,7 +138,7 @@ export default function ResultsDisplay({
                           />
                         </div>
                         <p className="w-12 text-right text-xs font-semibold text-muted-foreground">
-                          {((confidence as number) * 100).toFixed(1)}%
+                          {((confidence as number)).toFixed(1)}%
                         </p>
                       </div>
                     </div>
