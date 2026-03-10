@@ -28,23 +28,27 @@ The final trained model achieves **97.63% test accuracy** on unseen data.
 
 In addition to the trained CNN model, this project also includes a **web-based interface** that allows users to upload plant leaf images and receive disease predictions in real time.
 
-The system integrates:
-
-- **Next.js frontend** for the user interface
-- **Flask backend API** for model inference
-- **PyTorch CNN model** for disease prediction
-
 ### Prediction Workflow
 
-User uploads plant leaf image  
+User Image Upload  
 ↓  
-Frontend sends request to Flask API  
+Frontend (Vercel)  
 ↓  
-Image is preprocessed and passed to the CNN model  
+FastAPI Backend (Hugging Face Space)  
 ↓  
-Model predicts disease class  
+Leaf Region Detection  
 ↓  
-Prediction and confidence score returned to the web interface
+CNN Disease Classification  
+↓  
+Prediction Response
+
+## Live Demo
+You can try the deployed model here:
+
+Plant Disease Detection Web App  
+https://plant-disease-classification-kappa.vercel.app/
+
+Upload a leaf image to receive predicted disease and confidence scores.
 
 ---
 
@@ -67,6 +71,7 @@ Prediction and confidence score returned to the web interface
 • GPU-accelerated training using PyTorch
 • Built a Flask API for model inference  
 • Developed a Next.js web interface for real-time plant disease prediction
+• Implemented automatic leaf-region cropping to improve predictions on real-world images
 
 ## 🔑 Key Results
 
@@ -175,6 +180,17 @@ Fully Connected (512 → 38)
 | Fully Connected Layers | 2     |
 | Dropout Layers         | 1     |
 
+## Real-World Image Handling
+
+Images uploaded by users often contain complex backgrounds, while the training dataset mainly contains isolated leaves.
+
+To improve predictions on natural photos, an additional preprocessing step is applied during inference:
+
+• Automatic leaf-region detection using HSV color filtering  
+• Cropping of the largest detected green region  
+• Passing the cropped leaf to the CNN classifier
+
+This reduces background noise and improves prediction reliability for real-world images.
 ---
 
 # ⚙️ Training Setup
