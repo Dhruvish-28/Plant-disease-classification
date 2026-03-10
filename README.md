@@ -60,7 +60,7 @@ Upload a leaf image to receive predicted disease and confidence scores.
 
 ### Prediction Result
 
-![Prediction Result](results/prediction_result.png)
+![Prediction Result](results/prediction.png)
 
 ## ✨ Project Highlights
 
