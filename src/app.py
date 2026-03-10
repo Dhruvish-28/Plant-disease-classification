@@ -23,7 +23,7 @@ async def classify(file: UploadFile = File(...)):
         "all_predictions": {
             p[0].replace("___", " ").replace("_", " "): float(p[1])
             for p in predictions[:5]
-        }
+        },
         "note": "For best results upload a clear close-up image of a single leaf with minimal background."
     }
 @app.get("/")
