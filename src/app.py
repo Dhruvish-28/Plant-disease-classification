@@ -18,7 +18,8 @@ async def classify(file: UploadFile = File(...)):
     top_conf = predictions[0][1]
 
     return {
-        "disease": top_class.replace("___", " ").replace("_", " "),
+        "disease": top_class.replace("___", " ").replace("_", " ") + 
+           " (Tip: upload a clear close-up image of a single leaf for best results)",
         "confidence": round(top_conf, 2),
         "all_predictions": {
             p[0].replace("___", " ").replace("_", " "): float(p[1])
