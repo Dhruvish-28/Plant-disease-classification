@@ -358,7 +358,7 @@ This project demonstrates practical experience in:
 **Dhruvish Parikh**
 B.Tech – Artificial Intelligence & Data Science
 
-GitHub:
-[https://github.com/Dhruvish-28](https://github.com/Dhruvish-28)
+GitHub: https://github.com/Dhruvish-28  
+LinkedIn: https://www.linkedin.com/in/dhruvishparikh28
 
 
