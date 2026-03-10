@@ -1,52 +1,34 @@
-from flask import Flask, jsonify, request
-import os
-from flask_cors import CORS
-
+from fastapi import FastAPI, UploadFile, File
+import shutil
 from inference import predict_image
 
-app = Flask(__name__)
-CORS(app)
+app = FastAPI()
 
-UPLOAD_FOLDER = "uploads"
-os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+@app.post("/classify")
+async def classify(file: UploadFile = File(...)):
 
+    file_location = "temp.jpg"
 
-@app.route('/classify', methods=["POST"])
-def classify():
+    with open(file_location, "wb") as buffer:
+        shutil.copyfileobj(file.file, buffer)
 
-    try:
-        file = request.files["image"]
+    predictions = predict_image(file_location)
 
-        image_path = os.path.join(UPLOAD_FOLDER, file.filename)
-        file.save(image_path)
+    top_class = predictions[0][0]
+    top_conf = predictions[0][1]
 
-        predictions = predict_image(image_path)
-
-        os.remove(image_path)
-        
-        top_class = predictions[0][0]
-        top_conf = predictions[0][1]
-        
-        top3 = []
-
-        for cls, prob in predictions[:3]:
-            top3.append({
-                "disease": cls.replace("___"," ").replace("_"," "),
-                "confidence": round(prob * 100, 2)
-            })
-
-        return jsonify({
-            "disease": top_class.replace("___"," ").replace("_"," "),
-            "confidence_percentage": round(top_conf,2),
-            "top_predictions": top3
-        })
-
-    except Exception as e:
-        return jsonify({
-            "error": str(e)
-        }), 500
-
+    return {
+        "disease": top_class.replace("___", " ").replace("_", " "),
+        "confidence": round(top_conf, 2),
+        "all_predictions": {
+            p[0].replace("___", " ").replace("_", " "): float(p[1])
+            for p in predictions[:5]
+        }
+    }
+@app.get("/")
+def home():
+    return {"status": "Plant Disease API Running"}
+import uvicorn
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
+    uvicorn.run(app, host="0.0.0.0", port=7860)

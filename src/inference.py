@@ -3,6 +3,8 @@ from torchvision import transforms
 from PIL import Image
 import torch.nn.functional as F
 from pathlib import Path
+import cv2
+import numpy as np
 
 from model import PlantDiseaseCNN
 
@@ -62,9 +64,34 @@ transform = transforms.Compose([
     transforms.ToTensor()
 ])
 
+def crop_leaf_region(image):
+
+    img = np.array(image)
+
+    hsv = cv2.cvtColor(img, cv2.COLOR_RGB2HSV)
+
+    lower_green = np.array([25,40,40])
+    upper_green = np.array([90,255,255])
+
+    mask = cv2.inRange(hsv, lower_green, upper_green)
+
+    contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+    if len(contours) == 0:
+        return image
+
+    largest = max(contours, key=cv2.contourArea)
+
+    x,y,w,h = cv2.boundingRect(largest)
+
+    cropped = img[y:y+h, x:x+w]
+
+    return Image.fromarray(cropped)
+
 def predict_image(image_path):
 
     image = Image.open(image_path).convert("RGB")
+    image = crop_leaf_region(image)
     image = transform(image).unsqueeze(0).to(device)
 
     with torch.no_grad():
